@@ -1,4 +1,4 @@
-# -*- coding: future_fstrings -*-
+
 
 #    Friendly Telegram (telegram userbot)
 #    Copyright (C) 2018-2019 The Authors
