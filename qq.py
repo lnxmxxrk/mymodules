@@ -42,7 +42,7 @@ class QuotLyMod(loader.Module):
             if not reply_message.text:
                 return
         chat = '@QuotlyBot'
-        await event.edit('<code>Жду ответа от генератора...</code>')
+        await event.edit('<code>Processing...</code>')
         async with event.client.conversation(chat) as conv:
             try:
                 response = conv.wait_event(events.NewMessage(incoming=True,
@@ -53,10 +53,10 @@ class QuotLyMod(loader.Module):
                     await event.client.send_message(chat, user_msg)
                 response = await response
             except YouBlockedUserError:
-                await event.reply('<code>Разблокируй </code> @QuotlyBot')
+                await event.reply('<code>Unblock </code> @QuotlyBot')
                 return
             if response.text:
-                await event.edit('<code>Бот ответил не медиа форматом, попробуйте снова</code>')
+                await event.edit('<code>The bot responded with a non-media format, try again.</code>')
                 return
             await event.delete()
             if reply_and_text:
